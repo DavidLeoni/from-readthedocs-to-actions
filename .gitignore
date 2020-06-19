@@ -1,0 +1,17 @@
+
+*.log
+
+# Python
+
+__pycache__/
+*.pyc
+.hypothesis
+.pytest_cache
+*.py[cod]
+*$py.class
+*.so
+
+# Ide
+.vscode
+
+
