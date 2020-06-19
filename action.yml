@@ -2,27 +2,27 @@
 name: 'Sphinx Docs build in Github Actions with ReadTheDocs Docker'
 description: 'Tries to reproduce build in Githhub Actions with the same environment as in ReadTheDocs server. Also useful for local build.'
 inputs:
-  rtd_prj_name: 
+  RTD_PRJ_NAME: 
     description: |
       ReadTheDocs project name - also used as name for pdfs and epubs. 
       NOTE: you don't need to actually have a project on readthedocs servers!    
     default: 'myproject'
     required: true
-  git_url:
+  GIT_URL:
     description: 'Full git url to clone the repo'
     required: true
-  git_tag:
+  GIT_TAG:
     description: 'tag or branch'    
     default: master
     required: false
-  version:
+  VERSION:
     description: 'version as named on the website'    
     default: latest  
     required: false
-  requirements: 
+  REQUIREMENTS: 
     description: 'requirements file for pip install'    
     default: 'requirements.txt'
-  language: 
+  LANGUAGE: 
     description: 'Documentation language'    
     default: 'en'
     required: false
@@ -30,10 +30,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.rtd_prj_name }}
-    - ${{ inputs.git_url }}
-    - ${{ inputs.git_tag }}
-    - ${{ inputs.version }}
-    - ${{ inputs.requirements }}
-    - ${{ inputs.language }}
+    - ${{ inputs.RTD_PRJ_NAME }}
+    - ${{ inputs.GIT_URL }}
+    - ${{ inputs.GIT_TAG }}
+    - ${{ inputs.VERSION }}
+    - ${{ inputs.REQUIREMENTS }}
+    - ${{ inputs.LANGUAGE }}
     
