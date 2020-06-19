@@ -1,17 +1,17 @@
 # action.yml
-name: 'Sphinx Docs build with ReadTheDocs Docker Image'
-description: 'entrypoint.sh tries to mimic RTD build process using RTD Dockerfile, and if used as Github Action Sphinx _build output is made available in /github/workspace. Dockerfile is also usable locally for your own builds.'
+name: 'Sphinx Docs build in Github Actions with ReadTheDocs Docker'
+description: 'Tries to reproduce build in Githhub Actions with the same environment as in ReadTheDocs server. Also useful for local build.'
 inputs:
-  rtd-prj-name: 
+  rtd_prj_name: 
     description: |
       ReadTheDocs project name - also used as name for pdfs and epubs. 
       NOTE: you don't need to actually have a project on readthedocs servers!    
     default: 'myproject'
     required: true
-  git-url:
+  git_url:
     description: 'Full git url to clone the repo'
     required: true
-  git-tag:
+  git_tag:
     description: 'tag or branch'    
     default: master
     required: false
@@ -30,9 +30,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.rtd-prj-name }}
-    - ${{ inputs.git-url }}
-    - ${{ inputs.git-tag }}
+    - ${{ inputs.rtd_prj_name }}
+    - ${{ inputs.git_url }}
+    - ${{ inputs.git_tag }}
     - ${{ inputs.version }}
     - ${{ inputs.requirements }}
     - ${{ inputs.language }}
