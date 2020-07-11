@@ -26,6 +26,15 @@ inputs:
     description: 'Documentation language'    
     default: 'en'
     required: false
+  RTD_HTML_SINGLE:
+    description: 'builds single page html for offline use. Requires built project to have readthedocs_ext.readthedocs  sphinx extension'    
+    default: true
+    required: false
+  RTD_HTML_EXT:
+    description: 'builds html exactly as in RTD website. Requires built project to have readthedocs_ext.readthedocs sphinx extension'
+    default: true
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -36,4 +45,6 @@ runs:
     - ${{ inputs.VERSION }}
     - ${{ inputs.REQUIREMENTS }}
     - ${{ inputs.LANGUAGE }}
+    - ${{ inputs.RTD_HTML_SINGLE }}
+    - ${{ inputs.RTD_HTML_EXT }}
     

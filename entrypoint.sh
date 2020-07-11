@@ -3,12 +3,16 @@ set -o errexit #abort if any command fails
 set -x
 
 # NOTE: you don't need to actually have a project on readthedocs servers!
-RTD_PRJ_NAME=$1  # 'jupman', also used as name for pdfs and epubs
-GIT_URL=$2       # https://github.com/DavidLeoni/jupman.git
-GIT_TAG=$3       # tag or branch, i.e.  master
-VERSION=$4       # latest
-REQUIREMENTS=$5  # requirements.txt
-LANGUAGE=$6      # en
+RTD_PRJ_NAME=$1      # 'jupman', also used as name for pdfs and epubs
+GIT_URL=$2           # https://github.com/DavidLeoni/jupman.git
+GIT_TAG=$3           # tag or branch, i.e.  master
+VERSION=$4           # latest
+REQUIREMENTS=$5      # requirements.txt
+LANGUAGE=$6          # en
+# Following require built project to have readthedocs_ext.readthedocs  sphinx extension)
+RTD_HTML_SINGLE=$7   # true (builds single page html for offline use)
+RTD_HTML_EXT=$8      # true (builds html exactly as in RTD website)
+                            
 
 RTD_PRJ_PATH=/home/docs/checkouts/readthedocs.org/user_builds/$RTD_PRJ_NAME
 
@@ -53,11 +57,21 @@ $RTD_PRJ_PATH/envs/$VERSION/bin/python -m pip install --exists-action=w --no-cac
 
 cat conf.py
 
-#NOTE: in original log line is prepended by 'python '
-$RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -E -b readthedocs -d _build/doctrees-readthedocs -D language=$LANGUAGE . _build/html 
+if [ "$RTD_HTML_EXT" = true  ]; then  
 
-#NOTE: in original log line is prepended by 'python '
-$RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -b readthedocssinglehtmllocalmedia -d _build/doctrees-readthedocssinglehtmllocalmedia -D language=$LANGUAGE . _build/localmedia
+    #NOTE: in original log line is prepended by 'python '
+    $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -E -b readthedocs -d _build/doctrees-readthedocs -D language=$LANGUAGE . _build/html 
+else
+    #NOTE: in original log line is prepended by 'python '
+    $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -E -b html -d _build/doctrees-html -D language=$LANGUAGE . _build/html 
+fi
+
+if [ "$RTD_SINGLE_HTML" = true  ]; then  
+    #NOTE: in original log line is prepended by 'python '
+    $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -b readthedocssinglehtmllocalmedia -d _build/doctrees-readthedocssinglehtmllocalmedia -D language=$LANGUAGE . _build/localmedia    
+else
+    echo "Skipping single html build"
+fi
 
 #NOTE: in original log line is prepended by 'python '
 $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -b latex -D language=$LANGUAGE -d _build/doctrees . _build/latex
@@ -85,6 +99,10 @@ cp -f $RTD_PRJ_PATH/checkouts/$VERSION/./_build/epub/$RTD_PRJ_NAME.epub $RTD_PRJ
 
 # MANUALLY ADDED !
 zip _build/$RTD_PRJ_NAME-html-$LANGUAGE-$VERSION.zip _build/html
+
+if [ "$RTD_SINGLE_HTML" = true  ]; then  
+    zip _build/$RTD_PRJ_NAME-single-html-$LANGUAGE-$VERSION.zip _build/localmedia
+fi
 
 # MANUALLY ADDED !
 if [ -d "/github/workspace" ]; then  
