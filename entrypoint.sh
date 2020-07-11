@@ -58,15 +58,16 @@ $RTD_PRJ_PATH/envs/$VERSION/bin/python -m pip install --exists-action=w --no-cac
 cat conf.py
 
 if [ "$RTD_HTML_EXT" = true  ]; then  
-
+    echo "Building html with RTD extension"
     #NOTE: in original log line is prepended by 'python '
     $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -E -b readthedocs -d _build/doctrees-readthedocs -D language=$LANGUAGE . _build/html 
 else
+    echo "Building html without RTD extension"
     #NOTE: in original log line is prepended by 'python '
     $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -E -b html -d _build/doctrees-html -D language=$LANGUAGE . _build/html 
 fi
 
-if [ "$RTD_SINGLE_HTML" = true  ]; then  
+if [ "$RTD_HTML_SINGLE" = true  ]; then  
     #NOTE: in original log line is prepended by 'python '
     $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -b readthedocssinglehtmllocalmedia -d _build/doctrees-readthedocssinglehtmllocalmedia -D language=$LANGUAGE . _build/localmedia    
 else
