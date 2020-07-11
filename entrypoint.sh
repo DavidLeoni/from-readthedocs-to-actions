@@ -12,7 +12,10 @@ LANGUAGE=$6          # en
 # Following require built project to have readthedocs_ext.readthedocs  sphinx extension)
 RTD_HTML_SINGLE=$7   # true (builds single page html for offline use)
 RTD_HTML_EXT=$8      # true (builds html exactly as in RTD website)
-                            
+
+if [ "$9" = "True" ]
+    READTHEDOCS="True"
+fi
 
 RTD_PRJ_PATH=/home/docs/checkouts/readthedocs.org/user_builds/$RTD_PRJ_NAME
 

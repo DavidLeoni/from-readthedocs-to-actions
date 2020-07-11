@@ -34,6 +34,10 @@ inputs:
     description: 'builds html exactly as in RTD website. Requires built project to have readthedocs_ext.readthedocs sphinx extension'
     default: true
     required: false
+  READTHEDOCS:
+    description: "If you want to make Sphinx believe you are running on ReadTheDocs server, set this to 'True' (as RTD server does). NOTE: variable MUST be set to a string with capital first character, like 'True' or 'False'!"
+    default: 'True'
+    required: false
 
 runs:
   using: 'docker'
@@ -47,4 +51,5 @@ runs:
     - ${{ inputs.LANGUAGE }}
     - ${{ inputs.RTD_HTML_SINGLE }}
     - ${{ inputs.RTD_HTML_EXT }}
+    - ${{ inputs.READTHEDOCS }}
     
