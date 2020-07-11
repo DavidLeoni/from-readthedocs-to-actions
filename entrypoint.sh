@@ -13,7 +13,7 @@ LANGUAGE=$6          # en
 RTD_HTML_SINGLE=$7   # true (builds single page html for offline use)
 RTD_HTML_EXT=$8      # true (builds html exactly as in RTD website)
 
-if [ "$9" = "True" ]
+if [ "$9" = "True" ]; then
     READTHEDOCS="True"
 fi
 
