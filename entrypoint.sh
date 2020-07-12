@@ -12,10 +12,10 @@ LANGUAGE=$6          # en
 # Following require built project to have readthedocs_ext.readthedocs  sphinx extension)
 RTD_HTML_SINGLE=$7   # true (builds single page html for offline use)
 RTD_HTML_EXT=$8      # true (builds html exactly as in RTD website)
-
 if [ "$9" = "True" ]; then
-    READTHEDOCS="True"
+    export READTHEDOCS="True"
 fi
+export GOOGLE_ANALYTICS=${10}  # UA-123-123-123
 
 RTD_PRJ_PATH=/home/docs/checkouts/readthedocs.org/user_builds/$RTD_PRJ_NAME
 
@@ -28,6 +28,7 @@ echo "using   LANGUAGE=$LANGUAGE"
 echo "using   RTD_HTML_SINGLE=$RTD_HTML_SINGLE"
 echo "using   RTD_HTML_EXT=$RTD_HTML_EXT"
 echo "using   READTHEDOCS=$READTHEDOCS"
+echo "using   GOOGLE_ANALYTICS=$GOOGLE_ANALYTICS"
 echo
 echo "using   RTD_PRJ_PATH=$RTD_PRJ_PATH"
 

@@ -38,6 +38,10 @@ inputs:
     description: "If you want to make Sphinx believe you are running on ReadTheDocs server, set this to 'True' (as RTD server does). NOTE: variable MUST be set to a string with capital first character, like 'True' or 'False'!"
     default: 'True'
     required: false
+  GOOGLE_ANALYTICS:
+    description: "A code like UA-123-123-123"
+    default: ''
+    required: false
 
 runs:
   using: 'docker'
@@ -52,4 +56,5 @@ runs:
     - ${{ inputs.RTD_HTML_SINGLE }}
     - ${{ inputs.RTD_HTML_EXT }}
     - ${{ inputs.READTHEDOCS }}
+    - ${{ inputs.GOOGLE_ANALYTICS }}
     
