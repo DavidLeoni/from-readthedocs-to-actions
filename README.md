@@ -20,3 +20,5 @@ Tries to mimic RTD build process in [entrypoint.sh](entrypoint.sh) using RTD Doc
 
 Dockerfile is also usable locally for your own builds.
 
+For an example usage, see [Jupman](https://github.com/DavidLeoni/jupman/blob/master/.github/workflows/main.yml)
+
