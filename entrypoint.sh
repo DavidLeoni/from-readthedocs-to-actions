@@ -25,6 +25,9 @@ echo "using   GIT_TAG=$GIT_TAG"
 echo "using   VERSION=$VERSION"
 echo "using   REQUIREMENTS=$REQUIREMENTS"
 echo "using   LANGUAGE=$LANGUAGE"
+echo "using   RTD_HTML_SINGLE=$RTD_HTML_SINGLE"
+echo "using   RTD_HTML_EXT=$RTD_HTML_EXT"
+echo "using   READTHEDOCS=$READTHEDOCS"
 echo
 echo "using   RTD_PRJ_PATH=$RTD_PRJ_PATH"
 
