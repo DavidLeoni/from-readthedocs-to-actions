@@ -1,6 +1,6 @@
 # action.yml
 name: 'Sphinx Docs build in Github Actions with ReadTheDocs Docker'
-description: 'Reproduces build in Githhub Actions with the same environment as in ReadTheDocs server (to some degree). Also useful for local build.'
+description: 'Reproduces ReadTheDocs build in Github Actions (to some degree). Also useful for local build.'
 inputs:
   RTD_PRJ_NAME: 
     description: |
