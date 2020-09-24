@@ -14,11 +14,8 @@ Sphinx docs build using the same Docker and environment of ReadTheDocs server.
 
 The approach is a bit heavyweight (RTD docker alone is at least 5 gigas), so you may well want to try [other fine solutions for Sphinx](https://github.com/ammaraskar/sphinx-action) 
 
-## Technical description
-
-Tries to mimic RTD build process in [entrypoint.sh](entrypoint.sh) using RTD Dockerfile Ubuntu configuration, and if used as Github Action, Sphinx `_build` output is made available in `/github/workspace` which is shared by steps in a Github Action job.
+**DETAILS**: Tries to mimic RTD build process in [entrypoint.sh](entrypoint.sh) using RTD Dockerfile Ubuntu configuration, and if used as Github Action, Sphinx `_build` output is made available in `/github/workspace` which is shared by steps in a Github Action job.
 
 Dockerfile is also usable locally for your own builds.
 
 For an example usage, see [Jupman](https://github.com/DavidLeoni/jupman/blob/master/.github/workflows/main.yml)
-
