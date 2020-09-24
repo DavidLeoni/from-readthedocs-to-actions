@@ -84,25 +84,30 @@ fi
 #NOTE: in original log line is prepended by 'python '
 $RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -b latex -D language=$LANGUAGE -d _build/doctrees . _build/latex
 
+#NOTE: MANUALLY ADDED !  For PDFS and EPUBS
+set +e
+
 #NOTE: MANUALLY ADDED !
-#cd ./_build/latex/
-#
-#cat latexmkrc
-#
-#latexmk -r latexmkrc -pdf -f -dvi- -ps- -jobname=$RTD_PRJ_NAME -interaction=nonstopmode 
-#
+cd ./_build/latex/
+
+cat latexmkrc
+
+latexmk -r latexmkrc -pdf -f -dvi- -ps- -jobname=$RTD_PRJ_NAME -interaction=nonstopmode 
+
 #NOTE: using cp instead of mv
-#cp -f $RTD_PRJ_PATH/checkouts/$VERSION/./_build/latex/$RTD_PRJ_NAME.pdf $RTD_PRJ_PATH/artifacts/$VERSION/sphinx_pdf/$RTD_PRJ_NAME.pdf
-#
+cp -f $RTD_PRJ_PATH/checkouts/$VERSION/./_build/latex/$RTD_PRJ_NAME.pdf $RTD_PRJ_PATH/artifacts/$VERSION/sphinx_pdf/$RTD_PRJ_NAME.pdf
+
 #NOTE: MANUALLY ADDED !
-#cd $RTD_PRJ_PATH/checkouts/$VERSION
-#
+cd $RTD_PRJ_PATH/checkouts/$VERSION
+
 #NOTE: in original log line is prepended by 'python '
-#$RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -b epub -d _build/doctrees-epub -D language=$LANGUAGE . _build/epub
+$RTD_PRJ_PATH/envs/$VERSION/bin/sphinx-build -T -b epub -d _build/doctrees-epub -D language=$LANGUAGE . _build/epub
 
 #NOTE: using cp instead of mv
-#cp -f $RTD_PRJ_PATH/checkouts/$VERSION/./_build/epub/$RTD_PRJ_NAME.epub $RTD_PRJ_PATH/artifacts/$VERSION/sphinx_epub/$RTD_PRJ_NAME.epub 
+cp -f $RTD_PRJ_PATH/checkouts/$VERSION/./_build/epub/$RTD_PRJ_NAME.epub $RTD_PRJ_PATH/artifacts/$VERSION/sphinx_epub/$RTD_PRJ_NAME.epub 
 
+#NOTE: MANUALLY ADDED !
+set -o errexit #abort if any command fails
 # Reproduce build of ReadTheDocs  -- END
 
 # MANUALLY ADDED !
