@@ -5,7 +5,7 @@ set -x
 # NOTE: you don't need to actually have a project on readthedocs servers!
 RTD_PRJ_NAME=$1      # 'jupman', also used as name for pdfs and epubs
 GIT_URL=$2           # https://github.com/DavidLeoni/jupman.git
-GIT_TAG=$3           # tag or branch, i.e.  master
+GIT_TAG=$3           # tag or branch, i.e.  main or master
 VERSION=$4           # latest
 REQUIREMENTS=$5      # requirements.txt
 LANGUAGE=$6          # en

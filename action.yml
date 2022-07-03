@@ -16,8 +16,8 @@ inputs:
     description: 'Full git url to clone the repo'
     required: true
   GIT_TAG:
-    description: 'tag or branch'    
-    default: master
+    description: 'tag or branch (old repos may use branch master)'    
+    default: main
     required: false
   VERSION:
     description: 'version as named on the website'    
